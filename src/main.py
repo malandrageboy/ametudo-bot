@@ -54,5 +54,4 @@ def cu():
     api.update_status(content, 1196895932190789634, auto_populate_reply_metadata=True)
 
 if __name__ == "__main__":
-    # main()
-    cu()
+    main()
