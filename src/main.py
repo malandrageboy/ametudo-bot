@@ -34,6 +34,7 @@ def bot(api: tweepy.API):
             time.sleep(60 + 5)
 
 def main():
+    global isThreading
     # python src/main.py
     auth = tweepy.OAuthHandler(get_credentials()['consumer_key'], get_credentials()['consumer_secret'])
     auth.set_access_token(get_credentials()['access_token'], get_credentials()['access_token_secret'])
