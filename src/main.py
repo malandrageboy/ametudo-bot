@@ -37,21 +37,13 @@ def main():
     auth.set_access_token(get_credentials()['access_token'], get_credentials()['access_token_secret'])
 
     api = tweepy.API(auth)
-    th = threading.Thread(target=bot, args=(api,))
-    th.start()
     try:
         create_stream(api)
     except:
         print("[!!] ERRO NO STREAM, REINICIANDO...")
         main()
 
-def cu():
-    auth = tweepy.OAuthHandler(get_credentials()['consumer_key'], get_credentials()['consumer_secret'])
-    auth.set_access_token(get_credentials()['access_token'], get_credentials()['access_token_secret'])
-
-    api = tweepy.API(auth)
-    content = "*Amamos liame 💜"
-    api.update_status(content, 1196895932190789634, auto_populate_reply_metadata=True)
-
 if __name__ == "__main__":
+    th = threading.Thread(target=bot, args=(api,))
+    th.start()
     main()
