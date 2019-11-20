@@ -20,7 +20,7 @@ class MyStreamListener(tweepy.StreamListener):
                     word = ""
                     for w in ww:
                         word += w + " "
-                    content = f"*Amamos {word} 💜"
+                    content = f"*Amamos {word}💜"
                     self.api.update_status(content, status.id, auto_populate_reply_metadata=True)
                     print(f"[**] Novo post: {content}")
         
