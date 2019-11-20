@@ -7,6 +7,8 @@ from datetime import datetime
 import pytz
 import threading
 
+isThreading = False
+
 def get_credentials():
     t = open("config/credentials.json")
     j = json.loads(t.read())
@@ -37,6 +39,11 @@ def main():
     auth.set_access_token(get_credentials()['access_token'], get_credentials()['access_token_secret'])
 
     api = tweepy.API(auth)
+    if not isThreading:
+        th = threading.Thread(target=bot, args=(api,))
+        th.start()
+        isThreading = True
+    
     try:
         create_stream(api)
     except:
@@ -44,6 +51,4 @@ def main():
         main()
 
 if __name__ == "__main__":
-    th = threading.Thread(target=bot, args=(api,))
-    th.start()
     main()
