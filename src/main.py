@@ -21,6 +21,7 @@ def get_random_word():
     file.close()
     palavras = text.split("\n")
     palavra = random.choice(palavras)
+    palavra = palavra.lower()
     return palavra
 
 def bot(api: tweepy.API):
